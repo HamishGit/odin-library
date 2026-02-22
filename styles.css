@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Young+Serif&display=swap');
+
+:root {
+    --bg-dark: oklch(0.1 0.025 264);
+    --bg: oklch(0.15 0.025 264);
+    --bg-light: oklch(0.2 0.025 264);
+    --text: oklch(0.96 0.05 264);
+    --text-muted: oklch(0.76 0.05 264);
+    --highlight: oklch(0.5 0.05 264);
+    --border: oklch(0.4 0.05 264);
+    --border-muted: oklch(0.3 0.05 264);
+    --primary: oklch(0.76 0.1 264);
+    --secondary: oklch(0.76 0.1 84);
+    --danger: oklch(0.7 0.05 30);
+    --warning: oklch(0.7 0.05 100);
+    --success: oklch(0.7 0.05 160);
+    --info: oklch(0.7 0.05 260);
+
+    --font: 'Roboto';
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text);
+    font-family: 'Roboto', sans-serif;
+}
+
+header h1 {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 2.5rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#cards {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    grid-template-rows: repeat(4, 250px);
+    column-gap: 1rem;
+    row-gap: 1rem;
+    height: 70vh;
+    margin: 40px 0;
+}
+
+.card {
+    border: 1px solid var(--border-muted);
+    border-top: 2px solid var(--border);
+    background-color: var(--bg);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.card:hover {
+    background: linear-gradient(var(--bg-light), var(--bg));
+}
+
+.card h4 {
+    margin-top: 4px;
+}
+
+.card p,
+.card h4 {
+    color: var(--text-muted);
+}
+
+.card p {
+    font-size: 0.9rem;
+}
