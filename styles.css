@@ -62,6 +62,9 @@ main {
     background-color: var(--bg);
     border-radius: 10px;
     padding: 10px;
+    height: 220px;
+    display: grid;
+    grid-template-rows: 3fr 2fr;
 }
 
 .card:hover {
@@ -215,4 +218,27 @@ input[type="checkbox"]:checked::before {
 #submit-btn-container {
     grid-template-rows: 2;
     grid-row: 2;
+}
+
+.card-action-btns {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+.delete {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: var(--bg);
+}
+
+.delete svg {
+    fill: var(--text-muted);
+}
+
+.delete svg:hover {
+    fill: var(--text);
 }

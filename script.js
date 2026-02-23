@@ -26,18 +26,25 @@ function displayBooks() {
     cards.innerHTML = "";
     for (const book of myLibrary) {
         cards.innerHTML += `
-            <section class="card" data-id="${book.id}">
-                <h2>${book.title}</h2>
-                <h4>by ${book.author}</h4>
-                <p>${book.numPages} pages</p>
-                <p class="read-status">${book.read ? "has been read" : "has not been read"}</p>
+            <section class="card">
+                <article class="book-info">
+                    <h2>${book.title}</h2>
+                    <h4>by ${book.author}</h4>
+                    <p>${book.numPages} pages</p>
+                    <p class="read-status">${book.read ? "has been read" : "has not been read"}</p>
+                </article>
+                <article class="card-action-btns">
+                    <button type="button" class="delete" data-id="${book.id}">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>
+                    </button>
+                </article>
             </section>
         `;
     }
 }
 
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R Tolkien", 250, false);
-for (let i = 0; i < 19; i++) {
+for (let i = 0; i < 15; i++) {
     addBookToLibrary("Test Book", "Test Author", "320", (i % 2 === 0) ? true : false)
 }
 
@@ -65,5 +72,23 @@ dialog.addEventListener("close", () => {
 
         newBookForm.reset();
         dialog.returnValue = "";
+    }
+});
+
+const cardsContainer = document.getElementById("cards");
+
+cardsContainer.addEventListener("click", (e) => {
+    // We use this line to filter through elements that do not have the class ".delete"
+    const deleteBtn = e.target.closest(".delete");
+
+    if (deleteBtn) {
+
+        const bookId = deleteBtn.dataset.id;
+        const foundIndex = myLibrary.findIndex((item) => item.id === bookId);
+
+        if (foundIndex > -1) {
+            myLibrary.splice(foundIndex, 1);
+            displayBooks();
+        }
     }
 });
