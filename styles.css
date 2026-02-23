@@ -228,17 +228,24 @@ input[type="checkbox"]:checked::before {
     margin-right: 10px;
 }
 
-.delete {
+.delete,
+.toggle-read {
     width: 30px;
     height: 30px;
     border: none;
     background-color: var(--bg);
 }
 
-.delete svg {
+.delete svg,
+.toggle-read svg {
     fill: var(--text-muted);
 }
 
-.delete svg:hover {
+.delete svg:hover,
+.toggle-read svg:hover {
     fill: var(--text);
+}
+
+.toggle-read {
+    margin-right: 20px;
 }
