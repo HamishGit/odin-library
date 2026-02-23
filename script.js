@@ -17,6 +17,15 @@ function Book(title, author, numPages, read, id) {
 
 Book.prototype.toggleReadStatus = function () {
     this.read = !(this.read);
+    const bookCard = document.querySelector(`[data-id="${this.id}"] p.read-status`);
+
+    if (this.read) {
+        bookCard.classList.remove("red");
+        bookCard.classList.add("green");
+    } else {
+        bookCard.classList.add("red");
+        bookCard.classList.remove("green");
+    }
 }
 
 function addBookToLibrary(title, author, numPages, read) {
@@ -30,12 +39,12 @@ function displayBooks() {
     cards.innerHTML = "";
     for (const book of myLibrary) {
         cards.innerHTML += `
-            <section class="card">
+            <section class="card" data-id=${book.id}>
                 <article class="book-info">
                     <h2>${book.title}</h2>
                     <h4>by ${book.author}</h4>
                     <p>${book.numPages} pages</p>
-                    <p class="read-status">${book.read ? "has been read" : "has not been read"}</p>
+                    <p class="read-status ${book.read ? "green" : "red"}">${book.read ? "read" : "not read"}</p>
                 </article>
                 <article class="card-action-btns">
                     <button type="button" class="toggle-read" data-id="${book.id}">
@@ -51,9 +60,9 @@ function displayBooks() {
 }
 
 const theHobbit = addBookToLibrary("The Hobbit", "J.R.R Tolkien", 250, false);
-for (let i = 0; i < 15; i++) {
-    addBookToLibrary("Test Book", "Test Author", "320", (i % 2 === 0) ? true : false)
-}
+// for (let i = 0; i < 15; i++) {
+//     addBookToLibrary("Test Book", "Test Author", "320", (i % 2 === 0) ? true : false)
+// }
 
 displayBooks();
 
